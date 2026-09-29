@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Quiz Maker</title>
+  <link rel="stylesheet" href="../../css/kit.css" />
+  <link rel="stylesheet" href="../game.css" />
+  <style>
+    .question { font-size: 26px; text-align: center; overflow-wrap: anywhere; }
+    .answers { display: grid; gap: 12px; }
+    .answers .btn { min-height: 60px; font-size: 20px; }
+    .answers .btn.right { background: var(--leaf); }
+    .answers .btn.wrong { background: var(--berry); color: #fff; }
+    .feedback { text-align: center; font-size: 22px; font-weight: 700; min-height: 1.4em; }
+    .q-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 10px 12px; border: 2px solid var(--ink); border-radius: var(--radius-small); background: #fff; }
+    .q-row span { overflow-wrap: anywhere; }
+    .q-actions { display: flex; gap: 6px; flex: none; }
+    .menu-buttons { display: grid; gap: 12px; }
+  </style>
+</head>
+<body>
+  <div class="game" id="game"></div>
+  <script type="module" src="qna.js"></script>
+</body>
+</html>

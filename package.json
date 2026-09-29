@@ -1,0 +1,12 @@
+{
+  "name": "jia-games",
+  "private": true,
+  "description": "Jia Games: an Android app of games and challenges for kids aged 8+",
+  "scripts": {
+    "serve": "python3 -m http.server 4173 --directory web",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1"
+  }
+}

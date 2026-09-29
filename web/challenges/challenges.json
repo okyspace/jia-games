@@ -1,0 +1,63 @@
+{
+  "challenges": [
+    {
+      "id": "math-sprint",
+      "title": "Math Sprint",
+      "emoji": "🧮",
+      "color": "#FFD23F",
+      "stars": 10,
+      "description": "3 timed rounds: adding, taking away, then times tables.",
+      "type": "web",
+      "entry": "challenges/math/index.html",
+      "repeat": "daily"
+    },
+    {
+      "id": "book-report",
+      "title": "Book Explorer",
+      "emoji": "📖",
+      "color": "#4ECDC4",
+      "stars": 15,
+      "description": "Read an English story book of at least 50 pages, then tell us about it.",
+      "type": "book-log",
+      "minPages": 50,
+      "repeat": "always",
+      "parentCheck": true
+    },
+    {
+      "id": "clean-table",
+      "title": "Tidy Study Table",
+      "emoji": "🧽",
+      "color": "#7ED957",
+      "stars": 10,
+      "description": "Make your study table clean and neat.",
+      "type": "checklist",
+      "steps": ["Put books and papers away", "Put pens and pencils back", "Throw away rubbish", "Wipe the table"],
+      "repeat": "daily",
+      "parentCheck": true
+    },
+    {
+      "id": "fold-clothes",
+      "title": "Laundry Helper",
+      "emoji": "👕",
+      "color": "#FF6B9D",
+      "stars": 10,
+      "description": "Help Mum or Dad fold the clothes.",
+      "type": "checklist",
+      "steps": ["Fold the shirts", "Fold the pants and shorts", "Pair up the socks", "Put the piles away"],
+      "repeat": "daily",
+      "parentCheck": true
+    },
+    {
+      "id": "chinese-read-aloud",
+      "title": "读一读 Read Aloud",
+      "emoji": "🎤",
+      "color": "#A78BFA",
+      "stars": 10,
+      "description": "Read one Chinese paragraph aloud and record it into My Book. Unlocks more challenges!",
+      "type": "recording",
+      "repeat": "daily",
+      "parentCheck": true,
+      "unlocksMore": true
+    }
+  ]
+}

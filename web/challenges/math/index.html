@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Math Sprint</title>
+  <link rel="stylesheet" href="../../css/kit.css" />
+  <link rel="stylesheet" href="../../games/game.css" />
+  <style>
+    .rounds { display: flex; gap: 8px; justify-content: center; }
+    .round-dot { padding: 6px 12px; border: var(--line); border-radius: 999px; background: #fff; font-weight: 700; }
+    .round-dot.now { background: var(--sun); }
+    .round-dot.done { background: var(--leaf); }
+    .timer { height: 22px; border: var(--line); border-radius: 999px; background: #fff; overflow: hidden; }
+    .timer div { height: 100%; background: var(--mint); transition: width 0.25s linear; }
+    .timer.low div { background: var(--berry); }
+    .sum { font-size: clamp(44px, 13vw, 72px); font-weight: 700; text-align: center; }
+    .answer {
+      min-width: 150px;
+      margin: 0 auto;
+      padding: 6px 18px;
+      font-size: 48px;
+      font-weight: 700;
+      text-align: center;
+      background: #fff;
+      border: var(--line);
+      border-radius: var(--radius);
+      min-height: 76px;
+    }
+    .numpad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-width: 340px; margin: 0 auto; width: 100%; }
+    .numpad .key {
+      min-height: 62px;
+      border: var(--line);
+      border-radius: 18px;
+      background: #fff;
+      box-shadow: var(--pop-small);
+      font-size: 28px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .numpad .key:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--ink); }
+    .numpad .go { background: var(--leaf); }
+    .intro li { margin: 6px 0; }
+  </style>
+</head>
+<body>
+  <div class="game" id="game"></div>
+  <script type="module" src="math.js"></script>
+</body>
+</html>

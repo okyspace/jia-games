@@ -1,0 +1,49 @@
+{
+  "games": [
+    {
+      "id": "maze",
+      "title": "Mouse Maze",
+      "emoji": "🐭",
+      "color": "#FFD23F",
+      "description": "Help the mouse find the cheese!",
+      "type": "web",
+      "entry": "games/maze/index.html"
+    },
+    {
+      "id": "typing",
+      "title": "Key Hero",
+      "emoji": "⌨️",
+      "color": "#4ECDC4",
+      "description": "Learn where every key lives.",
+      "type": "web",
+      "entry": "games/typing/index.html"
+    },
+    {
+      "id": "memory",
+      "title": "Memory Match",
+      "emoji": "🃏",
+      "color": "#FF6B9D",
+      "description": "Flip cards and find the pairs.",
+      "type": "web",
+      "entry": "games/memory/index.html"
+    },
+    {
+      "id": "qna",
+      "title": "Quiz Maker",
+      "emoji": "❓",
+      "color": "#A78BFA",
+      "description": "Make your own quiz to test others!",
+      "type": "web",
+      "entry": "games/qna/index.html"
+    },
+    {
+      "id": "balloon-pop",
+      "title": "Balloon Pop",
+      "emoji": "🎈",
+      "color": "#7ED957",
+      "description": "Pop balloons before they fly away.",
+      "type": "native",
+      "nativeId": "balloon-pop"
+    }
+  ]
+}

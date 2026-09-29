@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="sunny">#FFD23F</color>
+    <color name="sky">#BDE8FF</color>
+
+    <style name="Theme.JiaGames" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/sunny</item>
+        <item name="android:navigationBarColor">#FFFFFF</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowBackground">@color/sky</item>
+    </style>
+</resources>

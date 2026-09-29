@@ -1,0 +1,14 @@
+/* Shared layout for game and challenge pages (they open full-screen inside the app). */
+body { min-height: 100vh; min-height: 100dvh; }
+.game {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 14px 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.hud { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.hud .pill { font-size: 17px; }
+.center { text-align: center; }
+.choices { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }

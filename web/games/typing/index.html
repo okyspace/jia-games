@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Key Hero</title>
+  <link rel="stylesheet" href="../../css/kit.css" />
+  <link rel="stylesheet" href="../game.css" />
+  <style>
+    .levels { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 12px; }
+    .level-btn { flex-direction: column; border-radius: var(--radius); min-height: 96px; }
+    .level-btn small { font-weight: 500; font-size: 14px; }
+    .target {
+      margin: 0 auto;
+      min-width: 130px;
+      padding: 10px 24px;
+      font-size: 72px;
+      font-weight: 700;
+      text-align: center;
+      background: #fff;
+      border: var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--pop);
+      letter-spacing: 4px;
+    }
+    .target .done { color: #2f9e44; }
+    .target .next { text-decoration: underline wavy var(--orange); }
+    .finger { text-align: center; font-weight: 600; min-height: 1.4em; }
+    .progress { height: 18px; border: var(--line); border-radius: 999px; background: #fff; overflow: hidden; }
+    .progress div { height: 100%; width: 0; background: var(--leaf); transition: width 0.2s; }
+    .keyboard { display: flex; flex-direction: column; gap: 6px; align-items: center; user-select: none; }
+    .kb-row { display: flex; gap: 5px; }
+    .kb-row:nth-child(3) { margin-left: 18px; }
+    .kb-row:nth-child(4) { margin-left: 36px; }
+    .kb-key {
+      width: clamp(26px, 8.4vw, 52px);
+      height: clamp(38px, 10vw, 54px);
+      border: 2px solid var(--ink);
+      border-radius: 10px;
+      box-shadow: 0 3px 0 var(--ink);
+      font-weight: 700;
+      font-size: clamp(14px, 4vw, 20px);
+      cursor: pointer;
+      background: var(--finger);
+      padding: 0;
+    }
+    .kb-key.target-key { outline: 4px solid var(--ink); animation: glow 0.9s infinite; }
+    @keyframes glow { 50% { box-shadow: 0 3px 0 var(--ink), 0 0 0 7px #ffd23f; } }
+    .kb-key.hit { background: var(--leaf) !important; }
+    .kb-key.miss { background: var(--berry) !important; }
+    .legend { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; font-size: 13px; }
+    .legend span { padding: 2px 8px; border: 2px solid var(--ink); border-radius: 999px; background: var(--finger); }
+  </style>
+</head>
+<body>
+  <div class="game" id="game"></div>
+  <script type="module" src="typing.js"></script>
+</body>
+</html>
