@@ -523,3 +523,63 @@ audio { width: 100%; margin-top: 8px; }
 .break-screen .checklist { text-align: left; }
 /* The grown-up PIN pad must appear above a break screen (to end it early). */
 .sheet-backdrop:has(.pin-sheet) { z-index: 120; }
+
+/* Break activities (web/js/break-activities.js) */
+.break-activities { margin-bottom: 14px; }
+.break-ask { font-weight: 600; }
+.break-choices { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+.break-choice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 6px;
+  border: var(--line);
+  border-radius: var(--radius-small);
+  background: #fff;
+  box-shadow: var(--pop-small);
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+}
+.break-choice span { font-size: 32px; }
+.break-activity h3 { margin-bottom: 8px; }
+.break-q { font-size: 24px; font-weight: 700; margin: 6px 0 12px; }
+.break-options { display: grid; gap: 10px; }
+.break-options .btn.right { background: var(--leaf); }
+.break-options .btn.wrong { background: var(--berry); color: #fff; }
+.fact-card { padding: 12px; margin-bottom: 12px; border: 2px solid var(--ink); border-radius: var(--radius-small); background: #fff; }
+.fact-card p { margin: 6px 0 0; }
+.breathe-circle {
+  width: 120px;
+  height: 120px;
+  margin: 12px auto;
+  border: var(--line);
+  border-radius: 50%;
+  background: radial-gradient(circle, #c9ecff, var(--mint));
+  animation: breathe 8s ease-in-out infinite;
+}
+@keyframes breathe { 0%, 100% { transform: scale(0.7); } 50% { transform: scale(1.1); } }
+.breathe-words { font-size: 22px; font-weight: 700; }
+.eye-text { font-size: 20px; font-weight: 600; }
+.eye-count { font-size: 40px; font-weight: 700; }
+.dot-track { position: relative; height: 90px; margin: 8px 0; }
+.dot {
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  background: var(--sun);
+  animation: dot-path 5s ease-in-out infinite;
+}
+@keyframes dot-path {
+  0% { left: 0; top: 0; }
+  25% { left: calc(100% - 26px); top: 60px; }
+  50% { left: calc(100% - 26px); top: 0; }
+  75% { left: 0; top: 60px; }
+  100% { left: 0; top: 0; }
+}
+/* Tall break cards scroll instead of being cut off at the top. */
+.break-screen { align-items: flex-start; }
+.break-screen .card { margin: auto 0; }

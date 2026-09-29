@@ -1,0 +1,24 @@
+{
+  "questions": [
+    { "q": "Which planet is closest to the Sun?", "answer": "Mercury", "wrong": ["Venus", "Mars"] },
+    { "q": "Which gas do we breathe in to stay alive?", "answer": "Oxygen", "wrong": ["Carbon dioxide", "Helium"] },
+    { "q": "What is water called when it freezes?", "answer": "Ice", "wrong": ["Steam", "Sand"] },
+    { "q": "How many legs does an insect have?", "answer": "6", "wrong": ["8", "4"] },
+    { "q": "Which gas do plants take in through their leaves to make food?", "answer": "Carbon dioxide", "wrong": ["Salt", "Helium"] },
+    { "q": "Which part of the body pumps blood?", "answer": "Heart", "wrong": ["Lungs", "Stomach"] },
+    { "q": "Which force pulls things down to the ground?", "answer": "Gravity", "wrong": ["Magnetism", "Wind"] },
+    { "q": "Which of these is a mammal?", "answer": "Whale", "wrong": ["Shark", "Octopus"] },
+    { "q": "What is the Sun?", "answer": "A star", "wrong": ["A planet", "A moon"] },
+    { "q": "Which animal is an amphibian?", "answer": "Frog", "wrong": ["Snake", "Eagle"] },
+    { "q": "At what temperature does water boil at sea level?", "answer": "100 °C", "wrong": ["50 °C", "0 °C"] },
+    { "q": "What does a caterpillar turn into?", "answer": "A butterfly or moth", "wrong": ["A bee", "A spider"] },
+    { "q": "Which material does a magnet pull?", "answer": "Iron", "wrong": ["Wood", "Plastic"] },
+    { "q": "Which organs help us breathe?", "answer": "Lungs", "wrong": ["Kidneys", "Ears"] },
+    { "q": "A rainbow appears when sunlight shines through…", "answer": "Raindrops", "wrong": ["Leaves", "Rocks"] },
+    { "q": "What do bees collect from flowers to make honey?", "answer": "Nectar", "wrong": ["Sand", "Salt"] },
+    { "q": "Which is the biggest planet in our solar system?", "answer": "Jupiter", "wrong": ["Earth", "Mars"] },
+    { "q": "Which of these is a solid at room temperature?", "answer": "Rock", "wrong": ["Water", "Air"] },
+    { "q": "What do we call animals that eat only plants?", "answer": "Herbivores", "wrong": ["Carnivores", "Omnivores"] },
+    { "q": "Why does the Moon shine at night?", "answer": "It reflects sunlight", "wrong": ["It makes its own light", "It is on fire"] }
+  ]
+}

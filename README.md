@@ -32,7 +32,7 @@ The app also has:
 - **App logo**: grown-ups can upload one.
 - **Grown-ups area (⚙️)**: protected by a PIN, **default `1234`**. It holds the logo, players, prizes to hand out, the progress report and the PIN itself.
 - **Progress report**: `Download/JiaGames/jia-games-progress.md` on the phone, updated whenever stars change.
-- **Healthy-use reminders**: sit up straight every 20 minutes. Every 30 minutes there's a break screen with a countdown that pauses the game (look at trees and plants, stand up, walk). After 1 hour of continuous use, a longer break to go do other things. On weekdays at 8:30pm, a reminder to pack the bag, brush teeth and shower. That last one also comes as a phone notification when the app is closed.
+- **Healthy-use reminders**: sit up straight every 20 minutes. Every 30 minutes there's a 2:30 break that pauses the game. The kid picks what to do: look at trees and plants and walk around, quick maths, science questions, history facts, or relax music with eyes closed. Every second break starts with a guided eye exercise. After 1 hour of continuous use, a longer break to go do other things. On weekdays at 8:30pm, a reminder to pack the bag, brush teeth and shower. That last one also comes as a phone notification when the app is closed.
 
 ## How it is built
 
@@ -97,6 +97,7 @@ Details for each feature are in `specs/`.
 
 | Date | Version | Feature | Spec | Requested by | Built by |
 | --- | --- | --- | --- | --- | --- |
+| 2026-09-29 | unreleased | Break activities: quick maths, science, history, relax music, and an eye exercise every 2nd break | [009](specs/009-wellbeing-reminders/spec.md) | KY (@okyspace) | Claude Code |
 | 2026-09-29 | – | Objectives and future ideas (travel journal, Chinese tab, wishes page, Build My App) added to the README | – | KY (@okyspace) | Claude Code |
 | 2026-09-29 | unreleased | Healthy-use reminders: posture (20 min), break with countdown that pauses the game (30 min), long break (1 h), weekday 8:30pm bedtime routine plus phone notification | [009](specs/009-wellbeing-reminders/spec.md) | KY (@okyspace) | Claude Code |
 | 2026-09-29 | 0.1.0 | MIT license and VERSION file | – | KY (@okyspace) | Claude Code |

@@ -1,0 +1,18 @@
+{
+  "facts": [
+    { "emoji": "🧱", "title": "The Great Wall of China", "text": "It is thousands of kilometres long. Different Chinese dynasties built and rebuilt it over about 2,000 years to protect their lands." },
+    { "emoji": "🔺", "title": "The Great Pyramid", "text": "The ancient Egyptians built the Great Pyramid of Giza about 4,500 years ago, using millions of huge stone blocks and no machines." },
+    { "emoji": "📜", "title": "Paper comes from China", "text": "Paper was invented in ancient China about 2,000 years ago. Around the year 105, an official named Cai Lun (蔡伦) made papermaking much better." },
+    { "emoji": "🇸🇬", "title": "Singapore's birthday", "text": "Singapore became an independent country on 9 August 1965. That is why National Day is celebrated on 9 August every year." },
+    { "emoji": "⛵", "title": "Raffles arrives", "text": "In 1819, Sir Stamford Raffles arrived in Singapore and set up a British trading port. It grew into a busy port city." },
+    { "emoji": "🌕", "title": "People on the Moon", "text": "In 1969, the Apollo 11 astronauts Neil Armstrong and Buzz Aldrin became the first people to walk on the Moon." },
+    { "emoji": "✈️", "title": "The first aeroplane flight", "text": "In 1903, the Wright brothers flew the first powered aeroplane. The first flight lasted only 12 seconds!" },
+    { "emoji": "🏅", "title": "The first Olympics", "text": "The Olympic Games began in ancient Greece more than 2,700 years ago. The modern Olympics started again in 1896." },
+    { "emoji": "🦖", "title": "Dinosaurs", "text": "Dinosaurs died out about 66 million years ago, long, long before the first humans lived." },
+    { "emoji": "🗿", "title": "The Terracotta Army", "text": "Thousands of life-size clay soldiers were made for China's first emperor, Qin Shi Huang (秦始皇), more than 2,200 years ago." },
+    { "emoji": "🔠", "title": "Movable type printing", "text": "Around the year 1040, Bi Sheng (毕昇) in China invented movable type: single characters that could be arranged to print pages." },
+    { "emoji": "🧭", "title": "The compass", "text": "The magnetic compass was invented in ancient China. Later, sailors used it to find their way across the oceans." },
+    { "emoji": "📖", "title": "Gutenberg's printing press", "text": "Around 1440, Johannes Gutenberg in Germany built a printing press that made books much faster and cheaper to make." },
+    { "emoji": "☎️", "title": "The first telephone", "text": "In 1876, Alexander Graham Bell made one of the first telephone calls. Now we carry phones in our pockets!" }
+  ]
+}

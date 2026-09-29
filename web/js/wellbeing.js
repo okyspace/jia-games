@@ -1,7 +1,8 @@
 // Healthy-use reminders while the app is open:
 //  - every 20 min of use: sit up straight (small banner)
-//  - every 30 min of use: break screen - look at trees/plants, stand up, walk - with a countdown;
-//    the open game is paused until the countdown ends
+//  - every 30 min of use: 2:30 break screen with a countdown; the open game is paused. The kid
+//    picks: move & look far, quick maths, science, history, relax music, or eye exercise
+//    (every 2nd break starts with the eye exercise) - see break-activities.js
 //  - after 1 hour of continuous use: longer break screen - go and do something else
 //  - weekdays from 8:30pm: bedtime routine - pack bag, brush teeth, shower
 // "Use" only counts while the app is on screen. Being away for 10+ minutes starts a new session.
@@ -9,11 +10,13 @@
 import { el, local, sfx } from './kit.js';
 import { askGrownUp } from './ui.js';
 import { postToPage } from './launcher.js';
+import { mountBreakActivities } from './break-activities.js';
 
 export const WELLBEING = {
   postureEveryMinutes: 20,
   breakEveryMinutes: 30,
-  breakSeconds: 120,
+  breakSeconds: 150,
+  eyeExerciseEveryNthBreak: 2,
   longBreakAfterMinutes: 60,
   longBreakSeconds: 300,
   newSessionAfterAwayMinutes: 10,
@@ -81,12 +84,15 @@ function tick() {
       seconds: WELLBEING.longBreakSeconds,
     });
   } else if (crossed(before, after, WELLBEING.breakEveryMinutes)) {
+    state.breakCount = (state.breakCount || 0) + 1;
+    save();
+    const eyes = state.breakCount % WELLBEING.eyeExerciseEveryNthBreak === 0;
     showBreak({
       kind: 'break',
-      emoji: '🌳',
+      emoji: eyes ? '👀' : '🌳',
       title: 'Break time!',
-      text: 'Your game is paused. While the clock counts down:',
-      tips: ['👀 Look far away at trees and plants', '🧍 Stand up and stretch high', '🚶 Walk around the room', '💧 Have a drink of water'],
+      text: eyes ? 'Your game is paused. Time to rest your eyes!' : 'Your game is paused until the clock reaches 0:00.',
+      activities: eyes ? 'eyes' : 'choose',
       seconds: WELLBEING.breakSeconds,
     });
   } else if (crossed(before, after, WELLBEING.postureEveryMinutes)) {
@@ -108,14 +114,19 @@ function showPosture() {
   setTimeout(() => { if (banner === mine) { banner.remove(); banner = null; } }, 20_000);
 }
 
-function showBreak({ kind, emoji, title, text, tips, seconds }) {
+function showBreak({ kind, emoji, title, text, tips = [], activities = null, seconds }) {
   postToPage({ type: 'jia:pause' });
   sfx.win();
   const endsAt = Date.now() + seconds * 1000;
   const clock = el('div.break-clock', { 'aria-live': 'polite' });
   const done = el('button.btn.leaf', { disabled: true }, 'Back to fun ▶');
+  const activityBox = el('div.break-activities');
+  const stopActivity = activities
+    ? mountBreakActivities(activityBox, { startWith: activities === 'choose' ? null : activities })
+    : () => {};
   const finish = () => {
     clearInterval(timer);
+    stopActivity();
     breakScreen?.remove();
     breakScreen = null;
     lastTick = Date.now();
@@ -138,8 +149,9 @@ function showBreak({ kind, emoji, title, text, tips, seconds }) {
       el('div.big-emoji', { 'aria-hidden': 'true' }, emoji),
       el('h2', {}, title),
       el('p', {}, text),
-      el('ul.break-tips', {}, tips.map((t) => el('li', {}, t))),
+      tips.length ? el('ul.break-tips', {}, tips.map((t) => el('li', {}, t))) : null,
       clock,
+      activityBox,
       done,
       el('button.link-btn', {
         onclick: async () => { if (await askGrownUp('Grown-ups can end the break early.')) finish(); },

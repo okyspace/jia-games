@@ -27,6 +27,7 @@ test('30 minutes: break screen pauses the game until the countdown ends', async 
 
   const breakScreen = page.getByRole('dialog', { name: 'Break time!' });
   await expect(breakScreen).toBeVisible();
+  await breakScreen.getByRole('button', { name: /Move & look far/ }).click();
   await expect(breakScreen).toContainText('Look far away at trees and plants');
   const back = breakScreen.getByRole('button', { name: /Back to fun/ });
   await expect(back).toBeDisabled();
@@ -46,7 +47,7 @@ test('30 minutes: break screen pauses the game until the countdown ends', async 
   expect(await page.evaluate(() => window.jia.handleBack())).toBe(true);
   await expect(breakScreen).toBeVisible();
 
-  await page.clock.runFor(minutes(1) + 1000);
+  await page.clock.runFor(minutes(1.5) + 1000);
   await expect(back).toBeEnabled();
   await back.click();
   await expect(breakScreen).toHaveCount(0);
@@ -56,7 +57,7 @@ test('30 minutes: break screen pauses the game until the countdown ends', async 
 test('1 hour of continuous use: longer break to go do other things', async ({ page }) => {
   // Skip through the 30-minute break first.
   await page.clock.runFor(minutes(30) + 2000);
-  await page.clock.runFor(minutes(2) + 1000);
+  await page.clock.runFor(minutes(2.5) + 1000);
   await page.getByRole('button', { name: /Back to fun/ }).click();
   await page.clock.runFor(minutes(30));
   const longBreak = page.getByRole('dialog', { name: 'Wow, 1 hour of play!' });
@@ -82,4 +83,61 @@ test('being away for 10+ minutes starts a new session', async ({ page }) => {
   await page.reload();
   await page.clock.runFor(minutes(10));
   await expect(page.getByRole('dialog', { name: 'Break time!' })).toHaveCount(0);
+});
+
+test.describe('break activities', () => {
+  const openBreak = async (page) => {
+    await page.clock.runFor(minutes(30) + 2000);
+    const breakScreen = page.getByRole('dialog', { name: 'Break time!' });
+    await expect(breakScreen).toBeVisible();
+    return breakScreen;
+  };
+
+  test('the kid can pick maths, science, history or relax', async ({ page }) => {
+    const breakScreen = await openBreak(page);
+    await expect(breakScreen.locator('[data-activity]')).toHaveCount(6);
+
+    await breakScreen.getByRole('button', { name: /Quick maths/ }).click();
+    const q = await breakScreen.locator('.break-q').textContent();
+    const [, a, op, b] = q.match(/(\d+) (\S) (\d+)/);
+    const answer = op === '+' ? +a + +b : op === '−' ? a - b : a * b;
+    await breakScreen.locator('.break-options').getByRole('button', { name: String(answer), exact: true }).click();
+    await expect(breakScreen.locator('.break-options .right')).toHaveText(String(answer));
+
+    await breakScreen.getByRole('button', { name: /Pick something else/ }).click();
+    await breakScreen.getByRole('button', { name: /Science/ }).click();
+    await expect(breakScreen.locator('.break-q')).toBeVisible();
+    await breakScreen.locator('.break-options .btn').first().click();
+    await expect(breakScreen.locator('.break-options .right')).toHaveCount(1);
+
+    await breakScreen.getByRole('button', { name: /Pick something else/ }).click();
+    await breakScreen.getByRole('button', { name: /History/ }).click();
+    await expect(breakScreen.locator('.fact-card h3')).toBeVisible();
+    const first = await breakScreen.locator('.fact-card h3').textContent();
+    await breakScreen.getByRole('button', { name: /Another fact/ }).click();
+    await expect(breakScreen.locator('.fact-card h3')).not.toHaveText(first);
+
+    await breakScreen.getByRole('button', { name: /Pick something else/ }).click();
+    await breakScreen.getByRole('button', { name: /Relax/ }).click();
+    await expect(breakScreen.getByText('Close your eyes')).toBeVisible();
+    await expect(breakScreen.locator('.breathe-words')).toHaveText('Breathe in…');
+    await page.clock.runFor(4100);
+    await expect(breakScreen.locator('.breathe-words')).toHaveText('Breathe out…');
+  });
+
+  test('every 2nd break starts with the eye exercise', async ({ page }) => {
+    await page.evaluate(() => {
+      const s = JSON.parse(localStorage.getItem('jia.wellbeing'));
+      s.breakCount = 1;
+      localStorage.setItem('jia.wellbeing', JSON.stringify(s));
+    });
+    await page.reload();
+    const breakScreen = await openBreak(page);
+    await expect(breakScreen.getByRole('heading', { name: /Eye exercise/ })).toBeVisible();
+    await expect(breakScreen.getByText('Step 1 of 6')).toBeVisible();
+    await expect(breakScreen.getByText(/Blink fast 10 times/)).toBeVisible();
+    await page.clock.runFor(16_000);
+    await expect(breakScreen.getByText('Step 2 of 6')).toBeVisible();
+    await expect(breakScreen.getByText(/Look at something far away/)).toBeVisible();
+  });
 });

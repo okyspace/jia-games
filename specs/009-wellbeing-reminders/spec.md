@@ -16,11 +16,20 @@ After every 20 minutes of use, a friendly banner says "Sit up straight! Back str
 
 ### User Story 2 - Break every 30 minutes (Priority: P1)
 
-After every 30 minutes of use, a full-screen break appears: look far away at trees and plants, stand up and stretch, walk around, drink water. A 2:00 countdown runs; "Back to fun" unlocks at 0:00. The open game is **paused**: its clock stops and key presses are ignored. The back button cannot skip the break; a grown-up (PIN) can end it early.
+After every 30 minutes of use, a full-screen break appears: look far away at trees and plants, stand up and stretch, walk around, drink water. A 2:30 countdown runs; "Back to fun" unlocks at 0:00. The open game is **paused**: its clock stops and key presses are ignored. The back button cannot skip the break; a grown-up (PIN) can end it early.
 
 **Acceptance Scenarios**:
 
 1. **Given** the maze is open, **When** 30 minutes of use pass, **Then** the break screen shows and the maze timer and mouse do not move until the break ends.
+
+### User Story 2b - Things to do on the break (Priority: P1)
+
+The 30-minute break is 2:30 long. The kid picks one: 🌳 move & look far (trees, plants, stand up, walk), 🧮 quick maths (5 multiple-choice + − ×), 🔬 science (5 questions), 🏛️ history ("did you know" cards), 🧘 relax (calm generated music and a breathing circle, eyes closed), or 👀 eye exercise. They can switch with "Pick something else". Every 2nd break starts with the guided eye exercise (blink, look far, near/far focus, eye rolls, follow the dot, palming).
+
+**Acceptance Scenarios**:
+
+1. **Given** a break, **Then** six activities are offered.
+2. **Given** the 2nd break of a session, **Then** the eye exercise starts automatically at step 1 of 6.
 
 ### User Story 3 - Long break after 1 hour (Priority: P1)
 
@@ -50,7 +59,7 @@ Monday–Friday from 8:30pm, the app shows a checklist once per day: pack school
 
 ## Assumptions
 
-- Break length 2 minutes; long break 5 minutes; a new session after 10 minutes away. [NEEDS CLARIFICATION]
+- Break length 2:30 (requested 2–3 minutes); eye exercise every 2nd break ("occasionally"); long break 5 minutes; a new session after 10 minutes away. [NEEDS CLARIFICATION]
 - "Weekdays" = Monday–Friday evenings. School nights are often Sunday–Thursday: change `days` if preferred. [NEEDS CLARIFICATION]
 - Usage time is per device (not per kid).
 - The long break can be ended after its countdown; it does not lock the app. [NEEDS CLARIFICATION: should it lock until a grown-up unlocks?]
