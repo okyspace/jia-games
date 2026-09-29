@@ -97,6 +97,7 @@ Details for each feature are in `specs/`.
 
 | Date | Version | Feature | Spec | Requested by | Built by |
 | --- | --- | --- | --- | --- | --- |
+| 2026-09-29 | – | Plan for automating issues → Spec Kit → PR (Emdash or GitHub Actions), parked | [docs](docs/AUTOMATION_PLAN.md) | KY (@okyspace) | Claude Code |
 | 2026-09-29 | unreleased | Break activities: quick maths, science, history, relax music, and an eye exercise every 2nd break | [009](specs/009-wellbeing-reminders/spec.md) | KY (@okyspace) | Claude Code |
 | 2026-09-29 | – | Objectives and future ideas (travel journal, Chinese tab, wishes page, Build My App) added to the README | – | KY (@okyspace) | Claude Code |
 | 2026-09-29 | unreleased | Healthy-use reminders: posture (20 min), break with countdown that pauses the game (30 min), long break (1 h), weekday 8:30pm bedtime routine plus phone notification | [009](specs/009-wellbeing-reminders/spec.md) | KY (@okyspace) | Claude Code |
