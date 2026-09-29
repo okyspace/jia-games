@@ -66,3 +66,18 @@ Download the APK from the run's `jia-games-debug-apk` artifact.
 This repo uses [Spec Kit](https://github.com/github/spec-kit). With Claude Code, run
 `/speckit-specify` → `/speckit-plan` → `/speckit-tasks` → `/speckit-implement` for new features.
 The principles are in `.specify/memory/constitution.md`.
+
+## Version
+
+The current version is in [`VERSION`](VERSION). The Android app's `versionName` is read from it.
+Releases are tagged with the same number (e.g. `0.1.0`).
+
+## License
+
+[MIT](LICENSE) © 2026 okyspace. You're free to use, copy, change and share this project,
+including commercially, as long as you keep the copyright notice (credit Jia Games / okyspace).
+
+Third-party parts keep their own licenses:
+
+- Fredoka font: SIL Open Font License, see `web/fonts/FREDOKA-OFL.txt`.
+- The bunny photo in `tools/icon/bunny.png` and the app icon made from it are not covered by the MIT license.

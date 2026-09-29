@@ -12,7 +12,8 @@ android {
         minSdk = 26
         targetSdk = 35
         versionCode = 1
-        versionName = "0.1.0"
+        // Single source of truth for the version: the VERSION file at the repo root.
+        versionName = rootProject.file("../VERSION").readText().trim()
     }
 
     buildFeatures {
