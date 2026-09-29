@@ -44,6 +44,11 @@ export function openPage({ title, url, color, challengeId, onComplete }) {
   return current;
 }
 
+/** Send a message (e.g. {type: 'jia:pause'}) to the open game/challenge page, if any. */
+export function postToPage(message) {
+  current?.frame.contentWindow?.postMessage(message, location.origin);
+}
+
 export function closePage() {
   current?.close();
 }

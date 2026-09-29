@@ -125,6 +125,37 @@ export function reportChallengeComplete(challengeId, details = {}) {
   }
 }
 
+// ---------- Pause support for games ----------
+// During a break the app sends {type: 'jia:pause'} / {type: 'jia:resume'} to the open game.
+// Games should use gameNow() instead of Date.now() for their clocks, so paused time doesn't count.
+let pausedAt = null;
+let pausedTotal = 0;
+
+export function gameNow() {
+  return Date.now() - pausedTotal - (pausedAt === null ? 0 : Date.now() - pausedAt);
+}
+
+export function isPaused() {
+  return pausedAt !== null;
+}
+
+window.addEventListener('message', (event) => {
+  if (event.origin !== location.origin || event.source !== window.parent) return;
+  if (event.data?.type === 'jia:pause' && pausedAt === null) pausedAt = Date.now();
+  if (event.data?.type === 'jia:resume' && pausedAt !== null) {
+    pausedTotal += Date.now() - pausedAt;
+    pausedAt = null;
+  }
+});
+
+// Ignore keyboard input while paused (taps are already blocked by the break screen).
+window.addEventListener('keydown', (event) => {
+  if (pausedAt !== null) {
+    event.stopImmediatePropagation();
+    event.preventDefault();
+  }
+}, true);
+
 export function formatTime(totalSeconds) {
   const s = Math.max(0, Math.round(totalSeconds));
   return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;

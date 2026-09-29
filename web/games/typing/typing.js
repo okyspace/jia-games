@@ -1,6 +1,6 @@
 // Key Hero: learn where the keys are on a keyboard, row by row.
 // Works with a real keyboard or by tapping the on-screen keyboard.
-import { el, local, sfx, confetti, showOverlay, shuffle } from '../../js/kit.js';
+import { el, local, sfx, confetti, showOverlay, shuffle, gameNow } from '../../js/kit.js';
 
 const ROWS = ['1234567890', 'qwertyuiop', 'asdfghjkl;', 'zxcvbnm,.'];
 
@@ -66,7 +66,7 @@ function makeTargets(level) {
 }
 
 function play(level) {
-  state = { level, targets: makeTargets(level), index: 0, pos: 0, hits: 0, misses: 0, start: Date.now() };
+  state = { level, targets: makeTargets(level), index: 0, pos: 0, hits: 0, misses: 0, start: gameNow() };
   const targetBox = el('div.target', { 'aria-live': 'polite' });
   const fingerHint = el('div.finger');
   const bar = el('div');
@@ -158,7 +158,7 @@ function press(key) {
 function finish() {
   const { level, hits, misses, start } = state;
   const accuracy = Math.round((hits / (hits + misses)) * 100);
-  const minutes = (Date.now() - start) / 60000;
+  const minutes = (gameNow() - start) / 60000;
   const kpm = Math.round(hits / Math.max(minutes, 1 / 60));
   const stars = accuracy >= 95 ? 3 : accuracy >= 80 ? 2 : 1;
   const all = progress();

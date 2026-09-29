@@ -1,5 +1,5 @@
 // Memory Match: flip two cards at a time and find all the pairs.
-import { el, local, sfx, confetti, showOverlay, shuffle, formatTime } from '../../js/kit.js';
+import { el, local, sfx, confetti, showOverlay, shuffle, formatTime, gameNow } from '../../js/kit.js';
 
 const EMOJIS = ['🐶', '🐱', '🐼', '🦊', '🐸', '🐵', '🦁', '🐯', '🐨', '🐷', '🐙', '🦄', '🐢', '🐝', '🦋', '🐳'];
 export const DIFFICULTIES = [
@@ -30,7 +30,7 @@ function start(difficulty) {
   const moves = el('span.pill', {}, '👆 0 moves');
   const time = el('span.pill', {}, '⏱️ 0:00');
   const found = el('span.pill', {}, `✨ 0 / ${difficulty.pairs}`);
-  game = { difficulty, open: [], matched: 0, moves: 0, start: Date.now(), busy: false, ui: { moves, found } };
+  game = { difficulty, open: [], matched: 0, moves: 0, start: gameNow(), busy: false, ui: { moves, found } };
 
   const cards = faces.map((face, i) => el('button.mcard', {
     'data-face': face,
@@ -43,7 +43,7 @@ function start(difficulty) {
     el('div.cards', { style: { '--cols': difficulty.cols } }, cards),
   );
   clearInterval(tick);
-  tick = setInterval(() => { time.textContent = `⏱️ ${formatTime((Date.now() - game.start) / 1000)}`; }, 1000);
+  tick = setInterval(() => { time.textContent = `⏱️ ${formatTime((gameNow() - game.start) / 1000)}`; }, 1000);
 }
 
 function flip(card) {
@@ -90,7 +90,7 @@ function win() {
   showOverlay({
     emoji: '🏆',
     title: newBest ? 'New best score!' : 'You found them all!',
-    text: `${moves} moves in ${formatTime((Date.now() - startedAt) / 1000)}.`,
+    text: `${moves} moves in ${formatTime((gameNow() - startedAt) / 1000)}.`,
     actions: [
       { label: 'Change level', className: 'white', onClick: menu },
       { label: 'Play again', className: 'leaf', onClick: () => start(difficulty) },

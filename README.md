@@ -21,6 +21,7 @@ The app also has:
 - **App logo**: grown-ups can upload one.
 - **Grown-ups area (⚙️)**: protected by a PIN, **default `1234`**. It holds the logo, players, prizes to hand out, the progress report and the PIN itself.
 - **Progress report**: `Download/JiaGames/jia-games-progress.md` on the phone, updated whenever stars change.
+- **Healthy-use reminders**: sit up straight every 20 minutes. Every 30 minutes there's a break screen with a countdown that pauses the game (look at trees and plants, stand up, walk). After 1 hour of continuous use, a longer break to go do other things. On weekdays at 8:30pm, a reminder to pack the bag, brush teeth and shower. That last one also comes as a phone notification when the app is closed.
 
 ## How it is built
 
@@ -66,6 +67,29 @@ Download the APK from the run's `jia-games-debug-apk` artifact.
 This repo uses [Spec Kit](https://github.com/github/spec-kit). With Claude Code, run
 `/speckit-specify` → `/speckit-plan` → `/speckit-tasks` → `/speckit-implement` for new features.
 The principles are in `.specify/memory/constitution.md`.
+
+## Feature history
+
+Newest first. "Requested by" is who asked for the feature; "Built by" is who wrote the code.
+Details for each feature are in `specs/`.
+
+| Date | Version | Feature | Spec | Requested by | Built by |
+| --- | --- | --- | --- | --- | --- |
+| 2026-09-29 | unreleased | Healthy-use reminders: posture (20 min), break with countdown that pauses the game (30 min), long break (1 h), weekday 8:30pm bedtime routine plus phone notification | [009](specs/009-wellbeing-reminders/spec.md) | KY (@okyspace) | Claude Code |
+| 2026-09-29 | 0.1.0 | MIT license and VERSION file | – | KY (@okyspace) | Claude Code |
+| 2026-09-29 | 0.1.0 | Bunny app icon | – | KY (@okyspace) | Claude Code |
+| 2026-09-29 | 0.1.0 | CI: ESLint, Android Lint, tests and debug APK on pushes to `ideation` | – | KY (@okyspace) | Claude Code |
+| 2026-09-29 | 0.1.0 | Progress report saved as Markdown on the phone | [008](specs/008-progress-report/spec.md) | KY (@okyspace) | Claude Code |
+| 2026-09-29 | 0.1.0 | Challenges: Math Sprint, Book Explorer, Tidy Study Table, Laundry Helper, 读一读 Read Aloud | [007](specs/007-challenges/spec.md) | KY (@okyspace) | Claude Code |
+| 2026-09-29 | 0.1.0 | Quiz Maker (Q&A game) | [006](specs/006-qna-game/spec.md) | KY (@okyspace) | Claude Code |
+| 2026-09-29 | 0.1.0 | Memory Match | [005](specs/005-memory-game/spec.md) | KY (@okyspace) | Claude Code |
+| 2026-09-29 | 0.1.0 | Key Hero (typing) | [004](specs/004-typing-game/spec.md) | KY (@okyspace) | Claude Code |
+| 2026-09-29 | 0.1.0 | Mouse Maze | [003](specs/003-maze-game/spec.md) | KY (@okyspace) | Claude Code |
+| 2026-09-29 | 0.1.0 | Kid login with photo, app logo upload | [002](specs/002-kid-login-and-logo/spec.md) | KY (@okyspace) | Claude Code |
+| 2026-09-29 | 0.1.0 | App shell: tabs, stars, prizes, notes, draw, My Book, grown-up PIN, native and web games | [001](specs/001-app-shell/spec.md) | KY (@okyspace) | Claude Code |
+| 2026-09-29 | – | Repository created | – | KY (@okyspace) | KY (@okyspace) |
+
+When you add a feature, add a row at the top (or ask Claude Code to).
 
 ## Version
 

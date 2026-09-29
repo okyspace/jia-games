@@ -1,7 +1,7 @@
 // Math Sprint challenge: 3 timed rounds – addition, subtraction, then multiplication.
 // Answer every question in a round before the timer runs out. A wrong answer must be fixed
 // before moving on. If time runs out, that round starts again. Finish all 3 to earn the stars.
-import { el, sfx, confetti, showOverlay, randInt, reportChallengeComplete } from '../../js/kit.js';
+import { el, sfx, confetti, showOverlay, randInt, reportChallengeComplete, gameNow } from '../../js/kit.js';
 
 const CHALLENGE_ID = 'math-sprint';
 
@@ -30,7 +30,7 @@ function intro() {
 function startRound(index) {
   roundIndex = index;
   const spec = ROUNDS[index];
-  round = { spec, number: 0, typed: '', q: spec.make(), deadline: Date.now() + spec.seconds * 1000, mistakes: 0 };
+  round = { spec, number: 0, typed: '', q: spec.make(), deadline: gameNow() + spec.seconds * 1000, mistakes: 0 };
 
   const dots = el('div.rounds', {}, ROUNDS.map((r, i) => el('span.round-dot' + (i < index ? '.done' : i === index ? '.now' : ''), {}, `${r.emoji} ${i + 1}`)));
   const count = el('span.pill', {});
@@ -69,7 +69,7 @@ function showQuestion() {
 
 function tickClock() {
   if (!round) return;
-  const left = Math.max(0, round.deadline - Date.now());
+  const left = Math.max(0, round.deadline - gameNow());
   const total = round.spec.seconds * 1000;
   round.ui.bar.style.width = `${(left / total) * 100}%`;
   round.ui.timer.classList.toggle('low', left < 20000);

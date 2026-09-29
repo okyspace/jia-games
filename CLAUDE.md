@@ -24,3 +24,4 @@ Audience: kids aged 8 and up. Read `.specify/memory/constitution.md` before chan
 - Build DOM with `el()` from `web/js/kit.js`. CSS custom properties passed in `style` are supported.
 - Every user story gets a Playwright test. Use accessible names (aria-label) so tests and screen readers can find controls.
 - New ideas go to the `ideation` branch first.
+- When a feature is added, add a row to the "Feature history" table in README.md (date, version, feature, spec, requested by, built by).

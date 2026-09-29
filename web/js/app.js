@@ -8,6 +8,7 @@ import { openGrownUps, changeLogo } from './grownups.js';
 import { currentProfile, signOut } from './profiles.js';
 import { renderLogin, avatar, logoNode } from './login.js';
 import { startAutoReport } from './report.js';
+import { startWellbeing, isBreakShowing } from './wellbeing.js';
 
 const root = document.getElementById('app');
 const loaded = new Map(); // tab id -> module
@@ -19,6 +20,7 @@ let showTab = () => {};
 // Called by the Android back button (MainActivity). Returns true if the app handled it.
 window.jia = {
   handleBack() {
+    if (isBreakShowing()) return true; // the break can't be skipped with the back button
     if (closeTop()) return true;
     if (started && activeId !== TABS[0].id) {
       showTab(TABS[0].id);
@@ -90,6 +92,7 @@ function startApp() {
   window.addEventListener('jia:logo', () => logoButton.replaceChildren(logoNode('logo')));
 
   startAutoReport();
+  startWellbeing();
   showTab(location.hash.slice(1) || TABS[0].id);
 }
 

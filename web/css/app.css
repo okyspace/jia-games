@@ -479,3 +479,47 @@ audio { width: 100%; margin-top: 8px; }
 .profile-card.new { background: #ffffff80; border-style: dashed; box-shadow: none; }
 .profile-card.new .avatar-big { background: #fff; box-shadow: none; }
 .player-row { flex-direction: column; align-items: stretch; }
+
+/* Healthy-use reminders (web/js/wellbeing.js) */
+.wellbeing-banner {
+  position: fixed;
+  top: calc(12px + env(safe-area-inset-top));
+  left: 50%;
+  translate: -50% 0;
+  z-index: 90;
+  width: min(520px, calc(100vw - 32px));
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  background: var(--paper);
+  border: var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--pop);
+}
+.wellbeing-banner .wb-emoji { font-size: 40px; }
+.wellbeing-banner > div { flex: 1; }
+.break-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background:
+    radial-gradient(circle at 20% 85%, #7ed957 0 90px, transparent 91px),
+    radial-gradient(circle at 80% 90%, #5cc94a 0 120px, transparent 121px),
+    linear-gradient(#bde8ff, #e9fbd9);
+  overflow-y: auto;
+}
+.break-screen.bedtime { background: linear-gradient(#2b2d42, #5c4d9a); }
+.break-screen .card { max-width: 440px; width: 100%; text-align: center; }
+.break-screen .big-emoji { font-size: 80px; line-height: 1.1; }
+.break-tips { text-align: left; font-size: 19px; font-weight: 600; padding-left: 8px; list-style: none; }
+.break-tips li { margin: 8px 0; }
+.break-clock { font-size: 56px; font-weight: 700; margin: 8px 0 14px; font-variant-numeric: tabular-nums; }
+.break-screen .link-btn { display: block; margin: 14px auto 0; }
+.break-screen .checklist { text-align: left; }
+/* The grown-up PIN pad must appear above a break screen (to end it early). */
+.sheet-backdrop:has(.pin-sheet) { z-index: 120; }

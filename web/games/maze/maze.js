@@ -1,5 +1,5 @@
 // Mouse Maze: guide the mouse to the cheese. Each level makes the maze a bit bigger.
-import { local, sfx, confetti, showOverlay, formatTime } from '../../js/kit.js';
+import { local, sfx, confetti, showOverlay, formatTime, gameNow } from '../../js/kit.js';
 
 const START_SIZE = 5;
 const MAX_SIZE = 18;
@@ -58,7 +58,7 @@ function startLevel() {
   player = { x: 0, y: 0 };
   trail = [{ x: 0, y: 0 }];
   moves = 0;
-  startTime = Date.now();
+  startTime = gameNow();
   won = false;
   ui.level.textContent = `Level ${level}`;
   ui.best.textContent = `🏅 Best: ${local.get('maze.bestLevel', 1)}`;
@@ -68,7 +68,7 @@ function startLevel() {
 
 function updateHud() {
   ui.moves.textContent = `👣 ${moves}`;
-  ui.time.textContent = `⏱️ ${formatTime((Date.now() - startTime) / 1000)}`;
+  ui.time.textContent = `⏱️ ${formatTime((gameNow() - startTime) / 1000)}`;
 }
 
 function resize() {
@@ -138,7 +138,7 @@ function move(dirName) {
 
 function win() {
   won = true;
-  const seconds = (Date.now() - startTime) / 1000;
+  const seconds = (gameNow() - startTime) / 1000;
   local.set('maze.bestLevel', Math.max(local.get('maze.bestLevel', 1), level + 1));
   sfx.win();
   confetti(['🧀', '🐭', '⭐', '🎉']);

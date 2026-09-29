@@ -6,6 +6,7 @@ import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.webkit.PermissionRequest
 import android.webkit.ValueCallback
@@ -51,6 +52,9 @@ class MainActivity : ComponentActivity() {
                 request.deny()
             }
         }
+
+    private val notificationPermission =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { }
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -117,6 +121,25 @@ class MainActivity : ComponentActivity() {
         })
 
         webView.loadUrl(START_URL)
+
+        BedtimeReminder.schedule(this)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+            ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) !=
+            PackageManager.PERMISSION_GRANTED
+        ) {
+            notificationPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
+        }
+    }
+
+    // Lets the web app know when it is off screen (so break timers don't count that time).
+    override fun onPause() {
+        webView.onPause()
+        super.onPause()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        webView.onResume()
     }
 
     private fun handlePermissionRequest(request: PermissionRequest) {
