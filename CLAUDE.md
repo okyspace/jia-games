@@ -5,6 +5,7 @@ Audience: kids aged 8 and up. Read `.specify/memory/constitution.md` before chan
 
 ## Commands
 
+- `npm run lint`: ESLint (must pass; CI runs it). Android Lint: `cd android && ./gradlew lintDebug`.
 - `npm install`, then `npm test`: Playwright end-to-end tests (Chromium, Pixel 7 viewport, fake mic).
 - `npm run serve`: serves `web/` at http://localhost:4173.
 - `cd android && ./gradlew assembleDebug`: builds the APK (needs the Android SDK; CI builds it).

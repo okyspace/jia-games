@@ -15,9 +15,8 @@ let current = null;
 export function openPage({ title, url, color, challengeId, onComplete }) {
   closePage();
   const frame = el('iframe.page-frame', { src: url, title, allow: 'microphone; autoplay' });
-  let removeBack;
   const close = () => {
-    removeBack?.();
+    removeBack();
     window.removeEventListener('message', onMessage);
     view.remove();
     current = null;
@@ -40,7 +39,7 @@ export function openPage({ title, url, color, challengeId, onComplete }) {
   );
   window.addEventListener('message', onMessage);
   document.body.append(view);
-  removeBack = pushBack(close);
+  const removeBack = pushBack(close);
   current = { close, frame };
   return current;
 }

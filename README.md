@@ -44,6 +44,7 @@ See [docs/ADDING_GAMES.md](docs/ADDING_GAMES.md) for how to add games, challenge
 ```bash
 npm install
 npm run serve          # open http://localhost:4173 in a browser (use phone size in dev tools)
+npm run lint           # ESLint quality check (JavaScript)
 npm test               # Playwright end-to-end tests
 ```
 
@@ -53,7 +54,12 @@ Build the Android app with Android Studio (open `android/`), or from the command
 cd android && ./gradlew assembleDebug   # needs the Android SDK
 ```
 
-CI (`.github/workflows/ci.yml`) runs the tests and builds a debug APK on every push. The APK is uploaded as the `jia-games-debug-apk` workflow artifact.
+CI (`.github/workflows/ci.yml`) runs on every push to the `ideation` branch (or by hand from the Actions tab):
+
+- **Quality check**: ESLint for the JavaScript, then the Playwright tests.
+- **Android**: Android Lint for the Kotlin/Android code, then a debug APK build.
+
+Download the APK from the run's `jia-games-debug-apk` artifact.
 
 ## Spec Kit workflow
 

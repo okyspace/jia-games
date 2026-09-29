@@ -1,13 +1,14 @@
 name: CI
 
+# For now this runs only for the ideation branch (and can be started by hand from the Actions tab).
 on:
   push:
-  pull_request:
+    branches: [ideation]
   workflow_dispatch:
 
 jobs:
-  web-tests:
-    name: Web app tests (Playwright)
+  quality:
+    name: Quality check (ESLint + Playwright tests)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,8 +17,11 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: ESLint (JavaScript)
+        run: npm run lint
       - run: npx playwright install --with-deps chromium
-      - run: npm test
+      - name: End-to-end tests
+        run: npm test
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
@@ -25,7 +29,7 @@ jobs:
           path: test-results/
 
   android:
-    name: Android APK
+    name: Android Lint + debug APK
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -34,6 +38,9 @@ jobs:
           distribution: temurin
           java-version: 17
       - uses: gradle/actions/setup-gradle@v4
+      - name: Android Lint (Kotlin/Android)
+        working-directory: android
+        run: ./gradlew --no-daemon lintDebug
       - name: Build debug APK
         working-directory: android
         run: ./gradlew --no-daemon assembleDebug
@@ -41,3 +48,9 @@ jobs:
         with:
           name: jia-games-debug-apk
           path: android/app/build/outputs/apk/debug/*.apk
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: android-lint-report
+          path: android/app/build/reports/lint-results-debug.*
+          if-no-files-found: ignore

@@ -34,6 +34,15 @@ android {
         }
     }
 
+    // Android Lint (quality check for the Kotlin/Android code). Errors fail the build;
+    // warnings are listed in app/build/reports/lint-results-debug.html.
+    lint {
+        abortOnError = true
+        warningsAsErrors = false
+        checkDependencies = false
+        htmlReport = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17

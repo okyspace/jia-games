@@ -30,9 +30,8 @@ document.addEventListener('keydown', (event) => {
  * Returns { close, body }.
  */
 export function openSheet({ title, content, onClose, className = '' }) {
-  let removeBack;
   const close = () => {
-    removeBack?.();
+    removeBack();
     backdrop.classList.add('closing');
     setTimeout(() => backdrop.remove(), 180);
     onClose?.();
@@ -50,7 +49,7 @@ export function openSheet({ title, content, onClose, className = '' }) {
   }, sheet);
   body.append(typeof content === 'function' ? content(close) : content);
   document.body.append(backdrop);
-  removeBack = pushBack(close);
+  const removeBack = pushBack(close);
   return { close, body };
 }
 
