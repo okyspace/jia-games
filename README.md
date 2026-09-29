@@ -71,7 +71,8 @@ CI (`.github/workflows/ci.yml`) runs on every push to the `ideation` branch (or 
 - **Quality check**: ESLint for the JavaScript, then the Playwright tests.
 - **Android**: Android Lint for the Kotlin/Android code, then a debug APK build.
 
-Download the APK from the run's `jia-games-debug-apk` artifact.
+**Newest test APK (one tap):** https://github.com/okyspace/jia-games/releases/download/ideation-latest/jia-games.apk
+(the `ideation-latest` pre-release is replaced on every push to `ideation`; each run also keeps a `jia-games-debug-apk` artifact).
 
 ## Spec Kit workflow
 
@@ -97,6 +98,7 @@ Details for each feature are in `specs/`.
 
 | Date | Version | Feature | Spec | Requested by | Built by |
 | --- | --- | --- | --- | --- | --- |
+| 2026-09-29 | – | Direct APK link: CI publishes each `ideation` build as the `ideation-latest` pre-release | – | KY (@okyspace) | Claude Code |
 | 2026-09-29 | – | Plan for automating issues → Spec Kit → PR (Emdash or GitHub Actions), parked | [docs](docs/AUTOMATION_PLAN.md) | KY (@okyspace) | Claude Code |
 | 2026-09-29 | unreleased | Break activities: quick maths, science, history, relax music, and an eye exercise every 2nd break | [009](specs/009-wellbeing-reminders/spec.md) | KY (@okyspace) | Claude Code |
 | 2026-09-29 | – | Objectives and future ideas (travel journal, Chinese tab, wishes page, Build My App) added to the README | – | KY (@okyspace) | Claude Code |

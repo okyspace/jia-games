@@ -31,6 +31,8 @@ jobs:
   android:
     name: Android Lint + debug APK
     runs-on: ubuntu-latest
+    permissions:
+      contents: write # to publish the ideation-latest pre-release
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-java@v4
@@ -54,3 +56,16 @@ jobs:
           name: android-lint-report
           path: android/app/build/reports/lint-results-debug.*
           if-no-files-found: ignore
+      # Fixed one-tap download link for the newest ideation build:
+      # https://github.com/okyspace/jia-games/releases/download/ideation-latest/jia-games.apk
+      - name: Publish "ideation-latest" pre-release
+        if: github.ref == 'refs/heads/ideation'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cp android/app/build/outputs/apk/debug/app-debug.apk jia-games.apk
+          gh release delete ideation-latest --cleanup-tag --yes || true
+          gh release create ideation-latest jia-games.apk \
+            --prerelease --latest=false --target "$GITHUB_SHA" \
+            --title "Latest ideation build (test APK)" \
+            --notes "Debug APK built from ideation commit ${GITHUB_SHA::7}. Replaced on every push to ideation."
