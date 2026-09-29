@@ -1,0 +1,16 @@
+# detekt (Kotlin static analysis). Builds on detekt's default rules; only the overrides are here.
+naming:
+  FunctionNaming:
+    ignoreAnnotated: ['Composable']
+    excludes: ['**/test/**']
+style:
+  MagicNumber:
+    ignorePropertyDeclaration: true
+    ignoreCompanionObjectPropertyDeclaration: true
+    ignoreNamedArgument: true
+    excludes: ['**/test/**']
+  UnusedPrivateMember:
+    ignoreAnnotated: ['Preview']
+complexity:
+  LongParameterList:
+    ignoreDefaultParameters: true

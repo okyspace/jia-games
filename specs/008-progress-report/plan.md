@@ -26,5 +26,5 @@ Offline-first ✅ (no network) · Private ✅ (file stays on the phone, grown-up
 ```text
 web/js/report.js      buildReport(), saveReport(), startAutoReport()
 web/js/native.js      saveTextToDevice() with browser download fallback
-android/.../JiaBridge.kt   saveTextFile()
+android/.../data/DeviceFilesRepository.kt   saveTextFile() (via ui/web/WebAppBridge "saveText")
 ```

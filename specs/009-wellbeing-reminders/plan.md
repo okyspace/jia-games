@@ -9,9 +9,9 @@
 boundary is crossed. Break screens post `jia:pause`/`jia:resume` to the open game page
 (`launcher.postToPage`); games use `gameNow()` from `kit.js`, which excludes paused time and
 blocks keys while paused. The bedtime check runs on the same tick. On Android,
-`BedtimeReminder.kt` schedules a windowed `AlarmManager` alarm for the next weekday 20:30 and
+`reminders/BedtimeScheduler.kt` schedules a windowed `AlarmManager` alarm for the next weekday 20:30 and
 posts a notification; `BedtimeReceiver` reschedules it after each alarm and after reboot.
-`MainActivity` calls `webView.onPause()/onResume()` so the page's visibility follows the app.
+`JiaApp` (Compose `LifecycleResumeEffect`) calls `webView.onPause()/onResume()` so the page's visibility follows the app.
 
 ## Technical Context
 
@@ -31,6 +31,7 @@ Kid-first (gentle wording, pictures, countdown) ✅ · Offline ✅ · Grown-ups 
 web/js/wellbeing.js           reminders, break screens, bedtime checklist, WELLBEING config
 web/js/kit.js                 gameNow(), isPaused(), pause/resume message handling
 web/js/launcher.js            postToPage()
-android/.../BedtimeReminder.kt  alarm scheduling, notification, BedtimeReceiver
-android/.../MainActivity.kt     schedule on launch, ask notification permission, WebView pause/resume
+android/.../reminders/        BedtimeSchedule (pure), BedtimeScheduler, BedtimeNotifier, BedtimeReceiver
+android/.../ui/MainActivity.kt  schedule on launch, ask notification permission
+android/.../ui/JiaApp.kt        WebView pause/resume with the lifecycle
 ```

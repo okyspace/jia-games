@@ -1,5 +1,5 @@
 // Games tab: a grid of game cards read from web/games/games.json.
-// "web" games open inside the app; "native" games are Kotlin activities (Android only).
+// "web" games open inside the app; "native" games are Kotlin + Compose screens (Android only).
 import { el } from '../kit.js';
 import { openPage } from '../launcher.js';
 import { isAndroid, nativeGameIds, launchNativeGame } from '../native.js';
@@ -8,16 +8,16 @@ import { openSheet, toast } from '../ui.js';
 export async function render(container) {
   const response = await fetch('games/games.json');
   const { games } = await response.json();
-  const available = new Set(nativeGameIds());
+  const available = new Set(await nativeGameIds());
 
   const tiles = games.map((game) => {
     const nativeMissing = game.type === 'native' && !available.has(game.nativeId);
     return el('button.tile', {
       style: { '--tile-color': game.color },
       'data-game': game.id,
-      onclick: () => {
+      onclick: async () => {
         if (game.type === 'native') {
-          if (nativeMissing || !launchNativeGame(game.nativeId)) {
+          if (nativeMissing || !(await launchNativeGame(game.nativeId))) {
             toast(isAndroid ? 'This game is not in this version of the app.' : 'This game works in the Android app 📱');
           }
           return;
@@ -50,7 +50,7 @@ function showHowToAdd() {
       el('ol', {},
         el('li', {}, 'Make a folder in web/games/ with an index.html for the game.'),
         el('li', {}, 'Add the game to web/games/games.json (title, emoji, colour).'),
-        el('li', {}, 'For a Kotlin game, use "type": "native" and register it in NativeGames.kt.')),
+        el('li', {}, 'For a Kotlin game, use "type": "native" and register it in nativegames/NativeGames.kt.')),
       el('p.hint', {}, 'See docs/ADDING_GAMES.md for the full guide.')),
   });
 }

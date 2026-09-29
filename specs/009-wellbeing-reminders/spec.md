@@ -50,7 +50,7 @@ Monday–Friday from 8:30pm, the app shows a checklist once per day: pack school
 
 - **FR-001**: Reminder intervals and durations MUST be configurable in one place (`WELLBEING` in `web/js/wellbeing.js`).
 - **FR-002**: Games MUST pause during breaks (`jia:pause`/`jia:resume` messages, `gameNow()` clock in `kit.js`).
-- **FR-003**: The bedtime time/days MUST match between the web app and `BedtimeReminder.kt`.
+- **FR-003**: The bedtime time/days MUST match between the web app and `reminders/BedtimeSchedule.kt`.
 - **FR-004**: No internet is needed.
 
 ## Success Criteria *(mandatory)*

@@ -110,7 +110,7 @@ function grownUpsContent() {
       ? `Saved on this phone as Download/JiaGames/${REPORT_FILE} and updated every time stars change.`
       : `Downloads ${REPORT_FILE} with every player's challenges, stars and prizes.`),
     el('button.btn.small.mint', {
-      onclick: () => toast(saveReport({ manual: true }) ? 'Report saved 📄' : 'Could not save the report'),
+      onclick: async () => toast((await saveReport({ manual: true })) ? 'Report saved 📄' : 'Could not save the report'),
     }, 'Save report now'),
   );
 

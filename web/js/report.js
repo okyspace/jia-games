@@ -56,7 +56,7 @@ export function buildReport(now = new Date()) {
   return lines.join('\n');
 }
 
-/** Save the report now. `manual` downloads it in a browser; auto-saves only happen in the Android app. */
+/** Save the report now (returns a Promise<boolean>). `manual` downloads it in a browser; auto-saves only happen in the Android app. */
 export function saveReport({ manual = false } = {}) {
   return saveTextToDevice(REPORT_FILE, buildReport(), 'text/markdown', { download: manual });
 }

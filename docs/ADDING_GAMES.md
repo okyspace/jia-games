@@ -15,13 +15,19 @@
 
 3. Add a Playwright test in `tests/games.spec.js`.
 
-## A native (Kotlin) game
+## A native (Kotlin + Compose) game
 
-1. Create an Activity in `android/app/src/main/java/com/jia/games/nativegames/` (see `BalloonPopActivity.kt`).
-2. Declare it in `AndroidManifest.xml`.
-3. Register it in `NativeGames.kt`: `"my-native-game" to MyNativeGameActivity::class.java`.
-4. Add to `games.json`: `{ ..., "type": "native", "nativeId": "my-native-game" }`.
+Follow the Android standards in `CLAUDE.md` (Google's app architecture guide). Copy `nativegames/balloonpop/`:
+
+1. `MyGameEngine.kt`: the rules as pure Kotlin functions over a `MyGameState` data class (no Android imports).
+2. `MyGameViewModel.kt`: holds `uiState: StateFlow<MyGameState>`, takes events (`onTap`, `onFrame`…).
+3. `MyGameScreen.kt`: a `@Composable` that draws `uiState` (`collectAsStateWithLifecycle`), sends events,
+   and calls `onExit` (also on the back button, via `BackHandler`).
+4. Register it in `android/app/src/main/java/com/jia/games/nativegames/NativeGames.kt`:
+   `NativeGame("my-native-game") { onExit -> MyGameScreen(onExit = onExit) }`.
+5. Add to `games.json`: `{ ..., "type": "native", "nativeId": "my-native-game" }`.
    In a desktop browser the card shows "📱 Android".
+6. Add unit tests for the engine and ViewModel in `android/app/src/test/`.
 
 ## A challenge
 

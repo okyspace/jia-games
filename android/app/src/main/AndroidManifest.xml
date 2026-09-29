@@ -5,11 +5,12 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
-    <!-- Weekday 8:30pm bedtime-routine notification (BedtimeReminder.kt). -->
+    <!-- Weekday 8:30pm bedtime-routine notification (reminders/). -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
+        android:name=".JiaGamesApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher"
@@ -18,7 +19,7 @@
         android:theme="@style/Theme.JiaGames">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|keyboard"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
@@ -28,14 +29,8 @@
             </intent-filter>
         </activity>
 
-        <!-- Native games. Register each one in NativeGames.kt as well. -->
-        <activity
-            android:name=".nativegames.BalloonPopActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-
         <receiver
-            android:name=".BedtimeReceiver"
+            android:name=".reminders.BedtimeReceiver"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />

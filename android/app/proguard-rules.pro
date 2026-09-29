@@ -1,4 +1,2 @@
-# Keep the JavaScript bridge methods callable from the WebView.
--keepclassmembers class com.jia.games.JiaBridge {
-    @android.webkit.JavascriptInterface <methods>;
-}
+# No JavaScript interface classes to keep: the web app talks to native code through
+# WebViewCompat.addWebMessageListener (see ui/web/WebAppBridge.kt).

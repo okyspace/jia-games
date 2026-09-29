@@ -43,6 +43,12 @@ jobs:
       - name: Android Lint (Kotlin/Android)
         working-directory: android
         run: ./gradlew --no-daemon lintDebug
+      - name: detekt (Kotlin static analysis)
+        working-directory: android
+        run: ./gradlew --no-daemon detekt
+      - name: Kotlin unit tests (ViewModels, data layer, game engine)
+        working-directory: android
+        run: ./gradlew --no-daemon testDebugUnitTest
       - name: Build debug APK
         working-directory: android
         run: ./gradlew --no-daemon assembleDebug
@@ -53,8 +59,11 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: android-lint-report
-          path: android/app/build/reports/lint-results-debug.*
+          name: android-reports
+          path: |
+            android/app/build/reports/lint-results-debug.*
+            android/app/build/reports/detekt/
+            android/app/build/reports/tests/
           if-no-files-found: ignore
       # Fixed one-tap download link for the newest ideation build:
       # https://github.com/okyspace/jia-games/releases/download/ideation-latest/jia-games.apk

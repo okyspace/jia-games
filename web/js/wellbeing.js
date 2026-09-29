@@ -6,7 +6,7 @@
 //  - after 1 hour of continuous use: longer break screen - go and do something else
 //  - weekdays from 8:30pm: bedtime routine - pack bag, brush teeth, shower
 // "Use" only counts while the app is on screen. Being away for 10+ minutes starts a new session.
-// The Android app also posts a bedtime notification when the app is closed (BedtimeReminder.kt).
+// The Android app also posts a bedtime notification when the app is closed (android/.../reminders/).
 import { el, local, sfx } from './kit.js';
 import { askGrownUp } from './ui.js';
 import { postToPage } from './launcher.js';
@@ -20,7 +20,7 @@ export const WELLBEING = {
   longBreakAfterMinutes: 60,
   longBreakSeconds: 300,
   newSessionAfterAwayMinutes: 10,
-  // Keep in sync with BedtimeReminder.kt
+  // Keep in sync with android/.../reminders/BedtimeSchedule.kt
   bedtime: { hour: 20, minute: 30, days: [1, 2, 3, 4, 5] }, // Mon–Fri (0 = Sunday)
 };
 

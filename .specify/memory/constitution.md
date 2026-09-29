@@ -1,6 +1,7 @@
 <!--
 Sync Impact Report
-- Version change: 1.0.0 → 1.1.0 (added Purpose section with the app's six objectives)
+- Version change: 1.1.0 → 1.2.0 (Technology Constraints: Android code follows Google's app architecture guide)
+- Previous: 1.0.0 → 1.1.0 (added Purpose section with the app's six objectives)
 - Previous: template → 1.0.0
 - Added principles: I. Kid-First Design, II. Offline-First & Private, III. Pluggable Content,
   IV. Web Core, Native Shell, V. Tested User Journeys, VI. Grown-Ups Stay in Control
@@ -40,7 +41,7 @@ explicitly exports or syncs it. The app requests only the permissions a feature 
 
 Adding a game, a challenge, a prize or a tab MUST be a small, local change:
 a folder plus one manifest/registry entry (`web/games/games.json`, `web/challenges/challenges.json`,
-`web/js/tabs.js`, `NativeGames.kt`). Shell code MUST NOT need edits to add ordinary content.
+`web/js/tabs.js`, `nativegames/NativeGames.kt`). Shell code MUST NOT need edits to add ordinary content.
 
 ### IV. Web Core, Native Shell
 
@@ -63,6 +64,9 @@ as salted hashes.
 
 ## Technology Constraints
 
+- Android native code follows Google's Guide to app architecture (layers, repositories, ViewModels
+  with StateFlow UI state, coroutines, Compose, single activity, DI, unit tests with fakes); details
+  in CLAUDE.md "Android standards". The web app in a WebView is the documented exception.
 - Android: Kotlin, minSdk 26, targetSdk 35, AndroidX WebKit `WebViewAssetLoader`.
 - Web: ES modules, no framework, no bundler; storage via `localStorage` (small JSON) and
   IndexedDB (drawings, recordings).
@@ -85,4 +89,4 @@ file with a version bump (MAJOR: principle removed/redefined, MINOR: principle a
 PATCH: wording) and a note in the Sync Impact Report. Reviews check the Constitution Check in
 each plan.
 
-**Version**: 1.1.0 | **Ratified**: 2026-09-29 | **Last Amended**: 2026-09-29
+**Version**: 1.2.0 | **Ratified**: 2026-09-29 | **Last Amended**: 2026-09-29

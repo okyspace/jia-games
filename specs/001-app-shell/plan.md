@@ -35,7 +35,7 @@ exposes native abilities (launch native games, save images/files) with browser f
 | --- | --- |
 | I. Kid-First Design: 52px buttons, emoji cues, friendly errors | ✅ |
 | II. Offline-First & Private: bundled font/assets, no network permission | ✅ |
-| III. Pluggable Content: `games.json`, `challenges.json`, `tabs.js`, `NativeGames.kt` | ✅ |
+| III. Pluggable Content: `games.json`, `challenges.json`, `tabs.js`, `nativegames/NativeGames.kt` | ✅ |
 | IV. Web Core, Native Shell: every bridge call has a fallback in `web/js/native.js` | ✅ |
 | V. Tested User Journeys: `tests/shell.spec.js`, `tests/tabs.spec.js` | ✅ |
 | VI. Grown-Ups in Control: PIN gate in `web/js/ui.js` | ✅ |
@@ -45,10 +45,10 @@ exposes native abilities (launch native games, save images/files) with browser f
 ```text
 android/                         Gradle project (app module)
 └── app/src/main/java/com/jia/games/
-    ├── MainActivity.kt          WebView host, mic permission, file picker, back button
-    ├── JiaBridge.kt             window.JiaNative: native games, save image/text files
-    ├── NativeGames.kt           registry of native game activities
-    └── nativegames/BalloonPopActivity.kt   sample native game
+    ├── ui/MainActivity.kt       single activity: WebView host, mic permission, file picker, back button
+    ├── (refactored in spec 010: ui/, data/, reminders/, nativegames/; see CLAUDE.md "Android standards")
+    ├── ui/web/WebAppBridge.kt   window.JiaNative: native games, save image/text files
+    └── nativegames/             registry + Compose native games (sample: balloonpop/)
 web/                             the app UI (packaged as APK assets)
 ├── index.html, css/kit.css, css/app.css, fonts/
 ├── js/app.js                    shell bootstrap (login → header, tabs)

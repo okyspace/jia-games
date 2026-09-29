@@ -168,7 +168,7 @@ function view(item) {
             reader.onload = () => resolve(reader.result);
             reader.readAsDataURL(item.blob);
           });
-          const ok = saveImageToDevice(dataUrl, 'jia-drawing-' + item.id);
+          const ok = await saveImageToDevice(dataUrl, 'jia-drawing-' + item.id);
           toast(ok ? (isAndroid ? 'Saved to your Pictures 📱' : 'Downloaded 📥') : 'Could not save to the phone');
         } }, isAndroid ? '📱 Save to phone' : '📥 Download'),
         el('button.btn.small.leaf', { onclick: () => {

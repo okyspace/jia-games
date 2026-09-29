@@ -45,7 +45,7 @@ specs/     Spec Kit specs (spec.md, plan.md and tasks.md for each feature).
 ```
 
 - **Web games** live in `web/games/<name>/` and are listed in `web/games/games.json`.
-- **Native games** are Kotlin activities registered in `NativeGames.kt`. `games.json` lists them with `"type": "native"`.
+- **Native games** are Kotlin + Jetpack Compose screens registered in `nativegames/NativeGames.kt`. `games.json` lists them with `"type": "native"`.
 - **Challenges** are listed in `web/challenges/challenges.json`.
 - **Tabs** are listed in `web/js/tabs.js`.
 
@@ -98,6 +98,7 @@ Details for each feature are in `specs/`.
 
 | Date | Version | Feature | Spec | Requested by | Built by |
 | --- | --- | --- | --- | --- | --- |
+| 2026-09-29 | unreleased | Android code aligned with Google's app architecture guide (data layer, ViewModels, Compose, single activity, DI, safer WebView bridge) plus scans (detekt, unit tests, CodeQL) | [010](specs/010-android-architecture/spec.md) | KY (@okyspace) | Claude Code |
 | 2026-09-29 | – | Direct APK link: CI publishes each `ideation` build as the `ideation-latest` pre-release | – | KY (@okyspace) | Claude Code |
 | 2026-09-29 | – | Plan for automating issues → Spec Kit → PR (Emdash or GitHub Actions), parked | [docs](docs/AUTOMATION_PLAN.md) | KY (@okyspace) | Claude Code |
 | 2026-09-29 | unreleased | Break activities: quick maths, science, history, relax music, and an eye exercise every 2nd break | [009](specs/009-wellbeing-reminders/spec.md) | KY (@okyspace) | Claude Code |
