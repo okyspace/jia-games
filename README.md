@@ -6,6 +6,17 @@ tabs for notes, drawing and "My Book" (reading logs and read-aloud recordings).
 
 Everything works offline, and all data stays on the device.
 
+## Objectives
+
+What the app is for. New features should serve at least one of these.
+
+1. **Grow the kid's brain**: puzzles, memory, logic and maths that stretch thinking.
+2. **Learn Chinese, English and Science** through games and challenges.
+3. **Learn prompting and vibe coding** at their level: describing what they want and seeing it built.
+4. **Keep memories they like**: drawings, notes, books read, recordings, trips.
+5. **Cultivate good habits**, with reminders to help (posture, breaks, bedtime routine, chores).
+6. **Use it on road trips**: works offline, with activities that suit the car.
+
 | Tab | What it does |
 | --- | --- |
 | 🎮 Games | Mouse Maze, Key Hero (typing), Memory Match, Quiz Maker, Balloon Pop (native sample) |
@@ -68,6 +79,17 @@ This repo uses [Spec Kit](https://github.com/github/spec-kit). With Claude Code,
 `/speckit-specify` → `/speckit-plan` → `/speckit-tasks` → `/speckit-implement` for new features.
 The principles are in `.specify/memory/constitution.md`.
 
+## Future ideas
+
+Not built yet. Each one becomes a spec in `specs/` (via `/speckit-specify`) when we start it.
+
+| # | Idea | What it is | Objectives | Things to decide |
+| --- | --- | --- | --- | --- |
+| 1 | 🗺️ Travel Journal | Kids pin places they have been, add 1–2 photos and a short note. Three views: a map, a timeline and a photo gallery. | 4, 6 | Map offline: a simple built-in world/country map, or map tiles that need internet? Photos from camera and gallery? Share with family? |
+| 2 | 🀄 Chinese tab | Practice and tests: 汉语拼音 (hanyu pinyin), putting the right Chinese word into a sentence, and "find the mistake" (wrong punctuation such as ， vs 。, wrong character, wrong pinyin or tone). | 1, 2, 6 | Which school level and word lists? Tones shown as marks (mā) or numbers (ma1)? Earn stars as a challenge? |
+| 3 | 💡 My Wishes | A page where kids write what they wish this app had (text, drawing or voice). Grown-ups can read the list and mark wishes as "planned" or "done". | 3 | Could feed straight into this Future ideas list; turn a wish into a challenge reward? |
+| 4 | 🤖 Build My App | Kids make their own mini app just by prompting (describe it, see it, change it). Creations are **not saved** and there is a **5-minute limit** per session, unless a grown-up approves more time or saving. | 3 | Needs an AI model, so internet and an API key; this breaks the "fully offline" rule, so it would be the only online feature, behind a grown-up switch. Content safety filters for kids. Cost limits. |
+
 ## Feature history
 
 Newest first. "Requested by" is who asked for the feature; "Built by" is who wrote the code.
@@ -75,6 +97,7 @@ Details for each feature are in `specs/`.
 
 | Date | Version | Feature | Spec | Requested by | Built by |
 | --- | --- | --- | --- | --- | --- |
+| 2026-09-29 | – | Objectives and future ideas (travel journal, Chinese tab, wishes page, Build My App) added to the README | – | KY (@okyspace) | Claude Code |
 | 2026-09-29 | unreleased | Healthy-use reminders: posture (20 min), break with countdown that pauses the game (30 min), long break (1 h), weekday 8:30pm bedtime routine plus phone notification | [009](specs/009-wellbeing-reminders/spec.md) | KY (@okyspace) | Claude Code |
 | 2026-09-29 | 0.1.0 | MIT license and VERSION file | – | KY (@okyspace) | Claude Code |
 | 2026-09-29 | 0.1.0 | Bunny app icon | – | KY (@okyspace) | Claude Code |

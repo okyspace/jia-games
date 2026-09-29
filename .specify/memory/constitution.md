@@ -1,6 +1,7 @@
 <!--
 Sync Impact Report
-- Version change: template → 1.0.0
+- Version change: 1.0.0 → 1.1.0 (added Purpose section with the app's six objectives)
+- Previous: template → 1.0.0
 - Added principles: I. Kid-First Design, II. Offline-First & Private, III. Pluggable Content,
   IV. Web Core, Native Shell, V. Tested User Journeys, VI. Grown-Ups Stay in Control
 - Added sections: Technology Constraints, Development Workflow
@@ -11,6 +12,13 @@ Sync Impact Report
 
 Jia Games is an Android app of games and challenges for kids aged 8 and up. Kids play games,
 finish challenges to earn stars, and spend stars on prizes that grown-ups hand out.
+
+## Purpose
+
+The app exists to: (1) grow the kid's brain; (2) help them learn Chinese, English and Science;
+(3) teach prompting and vibe coding at their level; (4) keep memories they like; (5) cultivate
+good habits with helpful reminders; (6) be usable on road trips. Every feature spec SHOULD say
+which of these it serves.
 
 ## Core Principles
 
@@ -77,4 +85,4 @@ file with a version bump (MAJOR: principle removed/redefined, MINOR: principle a
 PATCH: wording) and a note in the Sync Impact Report. Reviews check the Constitution Check in
 each plan.
 
-**Version**: 1.0.0 | **Ratified**: 2026-09-29 | **Last Amended**: 2026-09-29
+**Version**: 1.1.0 | **Ratified**: 2026-09-29 | **Last Amended**: 2026-09-29
